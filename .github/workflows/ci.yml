@@ -1,10 +1,11 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -24,19 +25,22 @@ jobs:
         pip install -r requirements.txt
         
     - name: Run tests
-      run: python -m unittest test_discriminant.py
-      
-    - name: Check code style
-      run: flake8 *.py --max-line-length=100
-      
-    - name: Check test coverage
+      run: |
+        python -m unittest test_discriminant.py
+        
+    - name: Run flake8
+      run: |
+        flake8 *.py --max-line-length=79
+        
+    - name: Check coverage
       run: |
         coverage run -m unittest test_discriminant.py
         coverage report
         
-    - name: Security check
-      run: bandit *.py
-      
+    - name: Run bandit
+      run: |
+        bandit *.py
+        
     - name: Send Telegram notification
       if: always()
       uses: appleboy/telegram-action@master
@@ -44,7 +48,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_CHAT_ID }}
         token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         message: |
-          CI Pipeline - ${{ github.repository }}
+          Repository: ${{ github.repository }}
           Status: ${{ job.status }}
-          Commit: ${{ github.sha }}
           Branch: ${{ github.ref }}
+          

@@ -3,15 +3,22 @@ from discriminant import calculate_discriminant
 
 
 class TestDiscriminant(unittest.TestCase):
-
+    
+    # Положительные тесты (D >= 0)
     def test_positive_discriminant(self):
-        """Тест для случая с положительным дискриминантом."""
-        self.assertEqual(calculate_discriminant(1, 5, 6), 1)
-
+        result = calculate_discriminant(1, 5, 6)
+        self.assertEqual(result, 1)
+    
     def test_zero_discriminant(self):
-        """Тест для случая с нулевым дискриминантом."""
-        self.assertEqual(calculate_discriminant(1, 2, 1), 0)
-
+        result = calculate_discriminant(1, 2, 1)
+        self.assertEqual(result, 0)
+    
+    # Негативные тесты (D < 0)
     def test_negative_discriminant(self):
-        """Тест для случая с отрицательным дискриминантом."""
-        self.assertEqual(calculate_discriminant(1, 1, 1), -3)
+        result = calculate_discriminant(1, 1, 1)
+        self.assertEqual(result, -3)
+
+
+if __name__ == '__main__':
+    unittest.main()
+    
