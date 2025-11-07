@@ -1,6 +1,3 @@
-import math
-
-
 def calculate_discriminant(a, b, c):
     """
     Вычисляет дискриминант квадратного уравнения ax^2 + bx + c = 0
