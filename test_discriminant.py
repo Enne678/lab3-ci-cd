@@ -7,7 +7,7 @@ class TestDiscriminant(unittest.TestCase):
     # Положительные тесты (D >= 0)
     def test_positive_discriminant(self):
         result = calculate_discriminant(1, 5, 6)
-        self.assertEqual(result, 999)  # ОШИБКА: неверное значение!
+        self.assertEqual(result, 1)
 
     def test_zero_discriminant(self):
         result = calculate_discriminant(1, 2, 1)
