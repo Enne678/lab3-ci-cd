@@ -1,6 +1,8 @@
-def calculate_discriminant(a, b, c):
+def calculate_discriminant(a,b,c):
     """
     Вычисляет дискриминант квадратного уравнения ax^2 + bx + c = 0
     Формула: D = b^2 - 4ac
     """
-    return b * b - 4 * a * c
+    x=1;y=2;z=3
+    very_long_variable_name = "Это очень длинная строка которая превышает максимальную длину строки в 79 символов допустимую flake8"
+    return b*b-4*a*c
